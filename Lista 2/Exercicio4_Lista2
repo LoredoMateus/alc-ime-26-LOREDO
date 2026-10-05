@@ -1,0 +1,31 @@
+import numpy as np
+
+# Os tamanhos n exigidos pelo enunciado
+dimensoes = [5, 15, 25]
+
+for n in dimensoes:
+    # 1. GERAR OS VETORES
+    u = np.random.rand(n, 1)
+    v = np.random.rand(n, 1)
+    
+    # 2. CRIAR A MATRIZ A 
+    A = u @ v.T  
+    
+    # 3. CALCULAR O POSTO (Rank)
+    posto = np.linalg.matrix_rank(A)
+    
+    # 4. CALCULAR AS NORMAS (Tamanho/Comprimento)
+    norma_u = np.linalg.norm(u, 2)
+    norma_v = np.linalg.norm(v, 2)
+    
+    # Multiplicamos as normas dos vetores isolados
+    prod_normas = norma_u * norma_v
+    
+    # Calculamos a norma-2 da matriz gigante inteira
+    norma_A = np.linalg.norm(A, 2)
+    
+    # 5. IMPRIMIR OS RESULTADOS
+    print(f"--- Para n = {n} ---")
+    print(f"Posto da matriz uv^T: {posto}")
+    print(f"||u||₂ * ||v||₂     : {prod_normas:.6f}")
+    print(f"||uv^T||₂           : {norma_A:.6f}\n")
